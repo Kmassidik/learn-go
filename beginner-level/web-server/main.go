@@ -6,13 +6,22 @@ import (
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello World")
+	if r.URL.Path != "/" {
+		notFoundHandler(w, r)
+		return
+	}
+	fmt.Fprintf(w, "Hello, World!")
+}
+
+func notFoundHandler(w http.ResponseWriter, r *http.Request) {
+	http.Error(w, "404 Not Found", http.StatusNotFound)
 }
 
 func main() {
 	http.HandleFunc("/", handler)
-	fmt.Println("Starting server on: 8080")
+
+	fmt.Println("Starting server at :8080")
 	if err := http.ListenAndServe(":8080", nil); err != nil {
-		fmt.Println("Server Failed:", err)
+		fmt.Println("Server failed:", err)
 	}
 }
