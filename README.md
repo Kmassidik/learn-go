@@ -1,8 +1,8 @@
 ﻿# Go Programming Project Ideas
 
 ## Beginner Level
-1. **Hello World Web Server**  ✅
-   Create a basic web server that responds with "Hello, World!".
+1. **Hello World Web Server** 
+   Create a basic web server that responds with "Hello, World!".  ✅
 2. **System Info Script**  
    Fetch and display system information such as OS, CPU, and memory usage.
 3. **Log File Parser**  
