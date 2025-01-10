@@ -23,4 +23,19 @@ func main() {
 	} else {
 		fmt.Println("Error: Unable to fetch CPU core information")
 	}
+
+	// Fetch initial memory usage
+	var memStats runtime.MemStats
+	runtime.ReadMemStats(&memStats)
+	fmt.Printf("Initial Memory Allocation: %v MB\n", memStats.Alloc/1024/1024)
+
+	// Simulate memory usage by allocating a large slice
+	sampleSlice := make([]int, 1_000_000)
+	sampleSlice[0] = 42 // Prevent compiler optimization
+
+	// Fetch memory usage after simulation
+	runtime.ReadMemStats(&memStats)
+	fmt.Printf("Memory Allocation After Simulation: %v MB\n", memStats.Alloc/1024/1024)
 }
+
+// you can more the memory docs in here : https://pkg.go.dev/runtime#ReadMemStats
