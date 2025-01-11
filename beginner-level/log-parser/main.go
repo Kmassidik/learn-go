@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"regexp"
 )
 
 func main() {
@@ -14,9 +15,20 @@ func main() {
 	}
 	defer file.Close()
 
+	logPattern := `\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\] \[(INFO|ERROR|DEBUG|WARN)\] (.+)`
+	re := regexp.MustCompile(logPattern)
+
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		fmt.Println(scanner.Text())
+		line := scanner.Text()
+		fmt.Println("Reading line:", line) // Debugging: print each line
+
+		match := re.FindStringSubmatch(line)
+		if match == nil {
+			fmt.Println("No match for line:", line) // Debugging: log unmatched lines
+			continue
+		}
+		fmt.Printf("Timestamp: %s | Level: %s | Message: %s\n", match[1], match[2], match[3])
 	}
 
 	if err := scanner.Err(); err != nil {

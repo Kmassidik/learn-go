@@ -1,0 +1,21 @@
+[2025-01-11 08:00:01] [INFO] Application startup initiated
+[2025-01-11 08:00:01] [INFO] Loading configuration from /etc/myapp/config.yaml
+[2025-01-11 08:00:02] [INFO] Database connection established successfully
+[2025-01-11 08:00:02] [WARN] Cache directory not found, creating new directory
+[2025-01-11 08:00:03] [INFO] User authentication service started
+[2025-01-11 08:15:23] [ERROR] Failed to process request [ID: 1234]: Invalid input parameter
+[2025-01-11 08:15:23] [DEBUG] Request details: {"user_id": "user123", "action": "update", "params": null}
+[2025-01-11 08:15:24] [INFO] Retry attempt 1 of 3
+[2025-01-11 08:15:25] [ERROR] Database query timeout after 5000ms
+[2025-01-11 08:15:26] [WARN] High memory usage detected: 85% used
+[2025-01-11 08:30:45] [INFO] Scheduled backup started
+[2025-01-11 08:30:50] [INFO] Backup completed successfully
+[2025-01-11 08:45:12] [DEBUG] Cache hit ratio: 78.5%
+[2025-01-11 09:00:00] [INFO] Hourly system health check started
+[2025-01-11 09:00:01] [INFO] All services operating normally
+[2025-01-11 09:15:30] [WARN] API rate limit approaching: 980/1000 requests
+[2025-01-11 09:15:35] [ERROR] Third-party service integration failed
+[2025-01-11 09:15:35] [DEBUG] Connection refused: api.external-service.com:443
+[2025-01-11 09:15:36] [INFO] Fallback service activated
+[2025-01-11 09:30:00] [INFO] User session cleanup initiated
+[2025-01-11 09:30:02] [INFO] Removed 145 expired sessions
