@@ -30,6 +30,7 @@ func main() {
 	for scanner.Scan() {
 		line := scanner.Text()
 		match := re.FindStringSubmatch(line)
+
 		if match != nil {
 			entry := LogEntry{
 				Timestamp: match[1],
@@ -38,6 +39,9 @@ func main() {
 			}
 			entries = append(entries, entry)
 			fmt.Println(entry)
+		} else {
+			fmt.Printf("Skipping invalid line: %s\n", line)
+			continue
 		}
 	}
 
