@@ -31,7 +31,7 @@ func main() {
 
 	// Simulate memory usage by allocating a large slice
 	sampleSlice := make([]int, 1_000_000)
-	sampleSlice[0] = 42 // Prevent compiler optimization
+	sampleSlice[0] = 42 // Prevent Go to remove this cause this compiler still use
 
 	// Fetch memory usage after simulation
 	runtime.ReadMemStats(&memStats)

@@ -4,7 +4,7 @@
 1. **Hello World Web Server** 
    - Create a basic web server that responds with "Hello, World!". ✅
 2. **System Info Script**  
-   Fetch and display system information such as OS, CPU, and memory usage.
+   - Fetch and display system information such as OS, CPU, and memory usage. ✅
 3. **Log File Parser**  
    Parse and analyze log files to extract useful information.
 4. **Basic REST API**  
