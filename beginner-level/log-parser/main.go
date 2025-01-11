@@ -7,6 +7,12 @@ import (
 	"regexp"
 )
 
+type LogEntry struct {
+	Timestamp string
+	Level     string
+	Message   string
+}
+
 func main() {
 	file, err := os.Open("logfile.log")
 	if err != nil {
@@ -19,16 +25,20 @@ func main() {
 	re := regexp.MustCompile(logPattern)
 
 	scanner := bufio.NewScanner(file)
+	var entries []LogEntry
+
 	for scanner.Scan() {
 		line := scanner.Text()
-		fmt.Println("Reading line:", line) // Debugging: print each line
-
 		match := re.FindStringSubmatch(line)
-		if match == nil {
-			fmt.Println("No match for line:", line) // Debugging: log unmatched lines
-			continue
+		if match != nil {
+			entry := LogEntry{
+				Timestamp: match[1],
+				Level:     match[2],
+				Message:   match[3],
+			}
+			entries = append(entries, entry)
+			fmt.Println(entry)
 		}
-		fmt.Printf("Timestamp: %s | Level: %s | Message: %s\n", match[1], match[2], match[3])
 	}
 
 	if err := scanner.Err(); err != nil {
